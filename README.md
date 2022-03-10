@@ -61,7 +61,7 @@ And add the following `Run script` build phase to your test target's `Build Phas
 ```Bash
 if [ $ACTION == "indexbuild" ]; then
   echo "Not running Cuckoo generator during indexing."
-  exit 0 
+  exit 0
 fi
 
 # Skip for preview builds
@@ -604,12 +604,13 @@ pod 'Cuckoo/OCMock'
 
 ## Contribute
 Cuckoo is open for everyone and we'd like you to help us make the best Swift mocking library. For Cuckoo development, follow these steps:
-1. Make sure you have latest stable version of Xcode installed
+1. Make sure you have the latest stable version of Xcode installed
 2. Clone the **Cuckoo** repository
-3. In Terminal, run: `make dev` from inside the **Cuckoo** directory
-4. Open `Cuckoo.xcodeproj`
-5. Select either `Cuckoo-iOS` or `Cuckoo-macOS` scheme and verify by running the tests (⌘+U)
-6. Peek around or file a pull request with your changes
+3. Install [Tuist](https://github.com/tuist/tuist) if you haven't already.
+4. In Terminal, run: `make` inside the **Cuckoo** directory
+5. Open `Cuckoo.xcworkspace`
+6. Select any scheme of `Cuckoo-iOS`, `Cuckoo-tvOS`, or `Cuckoo-macOS` ([OCMock](https://github.com/erikdoe/ocmock) schemes contain `Cuckoo_OCMock` instead) and verify by running the tests (⌘+U)
+7. Peek around or file a pull request with your changes
 
 The project consists of two parts - runtime and code generator. When you open the `Cuckoo.xcodeproj` in Xcode, you'll see these directories:
     - `Source` - runtime sources
