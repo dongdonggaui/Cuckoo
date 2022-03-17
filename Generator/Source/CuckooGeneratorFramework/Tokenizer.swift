@@ -267,7 +267,12 @@ public struct Tokenizer {
         let name = dictionary[Key.Name.rawValue] as? String ?? Tokenizer.nameNotSet
         let kind = dictionary[Key.Kind.rawValue] as? String ?? Tokenizer.unknownType
         let range = extractRange(from: dictionary, offset: .Offset, length: .Length)
-        let nameRange = extractRange(from: dictionary, offset: .NameOffset, length: .NameLength)
+        var nameRange = extractRange(from: dictionary, offset: .NameOffset, length: .NameLength)
+        if nameRange == nil, parameterLabel == nil, let range = range, name != Tokenizer.nameNotSet {
+            // parse name range when parameter with _
+            let nameRangeStartIndex = range.startIndex.advanced(by: 2)
+            nameRange = nameRangeStartIndex..<nameRangeStartIndex.advanced(by: name.count)
+        }
         let type = dictionary[Key.TypeName.rawValue] as? String
 
         switch kind {
